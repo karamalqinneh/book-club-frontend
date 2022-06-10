@@ -142,7 +142,6 @@ const Header = () => {
   const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
-    console.log(login.user);
     setUsername(login.user.name);
     setJobTitle(login.user.jobTitle);
   }, [login.user]);

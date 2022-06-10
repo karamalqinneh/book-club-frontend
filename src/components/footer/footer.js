@@ -70,10 +70,10 @@ const FooterCta = styled.a`
 const Footer = () => {
   return (
     <>
-      <StyledFooter class="footer">
-        <FooterWidgets class="footer-widgets centered">
-          <Widget class="widget footer-menu">
-            <WidgetTitle class="widget-title">Find your way</WidgetTitle>
+      <StyledFooter>
+        <FooterWidgets>
+          <Widget>
+            <WidgetTitle>Find your way</WidgetTitle>
             <FooterMenuUL>
               <li>
                 <FooterMenua href="#">Home</FooterMenua>
@@ -93,13 +93,13 @@ const Footer = () => {
             </FooterMenuUL>
           </Widget>
           <Widget classList={"footer-cta"}>
-            <WidgetTitle class="widget-title">PLACE AN ORDER</WidgetTitle>
+            <WidgetTitle>PLACE AN ORDER</WidgetTitle>
             <p>What are you waiting for? The book is ready for you to read.</p>
-            <FooterCta href="Browse.html">SHOP NOW!</FooterCta>
+            <FooterCta>Browse Now</FooterCta>
           </Widget>
-          <Widget class="widget footer-address">
+          <Widget>
             <address id="place">
-              <WidgetTitle class="widget-title"> Book Club</WidgetTitle>
+              <WidgetTitle> Book Club</WidgetTitle>
               <p>Amman, Jordan</p>
             </address>
           </Widget>
