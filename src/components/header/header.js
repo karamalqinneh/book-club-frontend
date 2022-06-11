@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 
 import styled from "styled-components";
 import { When } from "react-if";
+import { Link } from "react-router-dom";
 
 import { LoginContext } from "../../context/auth/login";
 import logo from "../../assets/logo.png";
@@ -15,7 +16,8 @@ const StyledHeader = styled.header`
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
-  background-color: rgba(189, 111, 42, 0.5);
+  z-index: 1000;
+  background-color: rgba(189, 111, 42, 1);
 `;
 
 const Data = styled.div`
@@ -23,13 +25,14 @@ const Data = styled.div`
   justify-content: center;
   align-items: center;
   width: 20vw;
-  height: 10vh;
+  height: 12vh;
 `;
 
 const Image = styled.img`
-  width: 8rem;
-  height: 4rem;
+  width: 10rem;
+  height: 6rem;
   background: transparent;
+  margin-top: -10%;
 `;
 
 const Avatar = styled.img`
@@ -42,21 +45,33 @@ const StyledNav = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw;
+  width: 40vw;
   height: 10vh;
-  margin-left: 1vw;
+  margin-left: 7.5vw;
 `;
 
 const Item = styled.div`
   font-size: 1.1rem;
   height: 10vh;
-  border-left: 1px solid rgb(189, 111, 42);
+  border-left: 1px solid #662f39;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: rgb(189, 111, 42);
   padding: 0 1.5rem;
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 1.1rem;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fefefe;
+  padding: 0 1.5rem;
+  text-decoration: none;
 `;
 
 const LoginInfo = styled.div`
@@ -152,9 +167,14 @@ const Header = () => {
           <Image src={logo} alt="logo" />
         </Data>
         <StyledNav>
-          <Item>Reading List</Item>
-          <Item style={{ borderRight: "1px solid rgb(189, 111, 42)" }}>
-            Rooms
+          <Item>
+            <StyledLink to="/">Home</StyledLink>
+          </Item>
+          <Item>
+            <StyledLink to="/library">Reading List</StyledLink>
+          </Item>
+          <Item style={{ borderRight: "1px solid #662f39" }}>
+            <StyledLink to="/discussion">Rooms</StyledLink>
           </Item>
         </StyledNav>
         <LoginInfo>

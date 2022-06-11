@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const StyledFooter = styled.footer`
-  padding: 3em 3em 0;
+  padding: 3em 3em;
   background: hsl(0, 0%, 10%);
   color: #fffced;
 `;
@@ -15,17 +13,6 @@ const FooterWidgets = styled.section`
 
 const Widget = styled.div`
   width: 30%;
-  &.footer-cta a {
-    display: block;
-    margin-top: 1em;
-    padding: 0 0.5em;
-    font-size: 2em;
-    font-weight: 900;
-    color: #fffced;
-    text-align: center;
-    text-decoration: none;
-    border: 5px solid #fffced;
-  }
 `;
 
 const WidgetTitle = styled.h4`
@@ -43,7 +30,7 @@ const FooterMenua = styled.a`
   padding-bottom: 0.5em;
   color: #fffced;
   text-decoration: none;
-  &:focus::before {
+  &:focus ::before {
     margin-right: 0.5em;
     content: "›";
   }
