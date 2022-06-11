@@ -1,6 +1,6 @@
 # book-club-frontend
 
-## Task Requirments
+## MVPs
 
 Develop an online book club web application using react & node JS, your app should give the user ability to sign up as an admin or a fan.
 
