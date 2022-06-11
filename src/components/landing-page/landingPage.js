@@ -14,13 +14,14 @@ const Banner = styled.div`
   background: rgba(255, 255, 255, 0.8);
   display: inline-block;
   padding: 2rem;
+  border-radius: 20px;
 `;
 
 const BannerTitle = styled.h1`
   font-family: monospace;
   font-size: 3rem;
   text-transform: uppercase;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: 0.1rem;
   margin-bottom: 3rem;
   font-weight: 400;
 `;
@@ -34,6 +35,7 @@ const BannerButton = styled.button`
   color: #222;
   border: 1px solid #f09d51;
   transition: all 0.3s linear;
+  border-radius: 20px;
   cursor: pointer;
   &:hover {
     background: transparent;

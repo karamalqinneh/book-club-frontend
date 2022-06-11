@@ -10,6 +10,8 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import LandingPage from "./components/landing-page/landingPage";
 import Library from "./components/Library/main";
+import MainRooms from "./components/rooms/main";
+import Room from "./components/rooms/discussion-rooms/room";
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/library" element={<Library />} />
-          <Route path="/discussions" element={<Library />} />
+          <Route path="/discussions" element={<MainRooms />} />
+          <Route path="/room/:room_id" element={<Room />} />
         </Routes>
         <Footer />
       </LoginProvider>
