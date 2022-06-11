@@ -58,6 +58,7 @@ function FormModal(props) {
   const login = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
   const [role, setRole] = useState("read");
   const [showSignup, setShowSignup] = useState(false);
   function handleSubmit(e) {
@@ -67,9 +68,10 @@ function FormModal(props) {
   async function handleSignup(e) {
     e.preventDefault();
     let newUser = {
-      username: username,
+      email: username,
       password: password,
-      role: role == "Select Your Role" ? "read" : role,
+      full_name: fullName,
+      role: role === "Select Your Role" ? "fan" : role,
     };
     let req = await superagent
       .post(`${process.env.REACT_APP_SERVER}/signup`)
@@ -87,9 +89,16 @@ function FormModal(props) {
     >
       <Input
         type="text"
-        placeholder="Username"
+        placeholder="email"
         onChange={(e) => {
           setUsername(e.target.value);
+        }}
+      />
+      <Input
+        type="text"
+        placeholder="Full Name"
+        onChange={(e) => {
+          setFullName(e.target.value);
         }}
       />
       <Input

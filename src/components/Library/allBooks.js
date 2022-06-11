@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
 
 import CustomCard from "../UI/card/card";
 
@@ -10,20 +13,20 @@ const Section = styled.section`
   margin: 5vh 0;
 `;
 
-const data = {
-  genre: "poetry",
-  introduction:
-    "As the French and Indian war rages, the two daughters of a British officer prepare to return home.",
-  name: "Love & Misadventure",
-  img_url: "https://m.media-amazon.com/images/I/31Qy+oNDafL.jpg",
-  book_url: "../pdf/poetry-../pdf/book-3.pdf",
-  publish_date: "2013/09/12",
-};
-const allData = [data, data, data, data, data, data, data, data];
-
 const AllBooks = (props) => {
-  let cards = allData.map((ele) => {
-    return <CustomCard data={ele} />;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    let fetchData = async () => {
+      let response = await axios.get(
+        `${process.env.REACT_APP_SERVER}/get-books`
+      );
+      let library = response.data.filter((ele) => ele.suggestion === false);
+      setData(library);
+    };
+    fetchData();
+  });
+  let cards = data.map((ele) => {
+    return <CustomCard data={ele} basicCard={true} />;
   });
   return <Section>{cards}</Section>;
 };

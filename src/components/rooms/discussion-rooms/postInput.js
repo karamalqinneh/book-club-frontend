@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const PostInput = ({ socket }) => {
+  const { room_id } = useParams();
   const [value, setValue] = useState("");
   const submitForm = (e) => {
     e.preventDefault();
-    socket.emit("message", value);
+    socket.emit("send-message", value, room_id);
     setValue("");
   };
 
@@ -13,7 +15,7 @@ const PostInput = ({ socket }) => {
       <input
         autoFocus
         value={value}
-        placeholder="Type your message"
+        placeholder="Type your post"
         onChange={(e) => {
           setValue(e.currentTarget.value);
         }}

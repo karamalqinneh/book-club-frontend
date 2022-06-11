@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 
 import styled from "styled-components";
 import { Card, Button, Form } from "react-bootstrap";
+import axios from "axios";
 
 const StyledCard = styled(Card)`
   margin: 0 0 3vh 3vw;
@@ -21,34 +22,52 @@ const Container = styled(Card.Body)`
   flex-direction: column;
 `;
 
-const data = {
-  genre: "poetry",
-  introduction:
-    "As the French and Indian war rages, the two daughters of a British officer prepare to return home.",
-  name: "Love & Misadventure",
-  img_url: "https://m.media-amazon.com/images/I/31Qy+oNDafL.jpg",
-  book_url: "../pdf/poetry-../pdf/book-3.pdf",
-  publish_date: "2013/09/12",
-};
-const allData = [data, data, data, data, data, data, data, data];
-
 const CreateRoom = (props) => {
+  const [data, setData] = useState([]);
   const [options, setOptions] = useState();
   const [bookName, setBookName] = useState("");
+  const [roomName, setRoomName] = useState("");
+  useEffect(() => {
+    let fetchData = async () => {
+      let response = await axios.get(
+        `${process.env.REACT_APP_SERVER}/get-books`
+      );
+      setData(response.data);
+    };
+    fetchData();
+  });
+
   useEffect(() => {
     setOptions(
-      allData.map((ele) => {
-        return <option value={ele.name}>{ele.name}</option>;
+      data.map((ele) => {
+        return <option value={ele.book_id}>{ele.name}</option>;
       })
     );
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventsdefault();
+    let body = {
+      book_id: bookName,
+      name: roomName,
+    };
+    await axios.post(`${process.env.REACT_APP_SERVER}/create-room`, body);
+  };
+
   return (
     <StyledCard>
       <Container>
-        <Form>
+        <Form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
           <Form.Group>
-            <Form.Control type="text" placeholder="Room Name" />
+            <Form.Control
+              type="text"
+              placeholder="Room Name"
+              onChange={(e) => setRoomName(e.target.value)}
+            />
           </Form.Group>
           <Form.Group>
             <Form.Select

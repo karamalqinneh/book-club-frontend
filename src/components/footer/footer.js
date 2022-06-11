@@ -80,7 +80,7 @@ const Footer = () => {
             </FooterMenuUL>
           </Widget>
           <Widget classList={"footer-cta"}>
-            <WidgetTitle>PLACE AN ORDER</WidgetTitle>
+            <WidgetTitle>Join the Club</WidgetTitle>
             <p>What are you waiting for? The book is ready for you to read.</p>
             <FooterCta>Browse Now</FooterCta>
           </Widget>

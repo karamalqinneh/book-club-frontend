@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
+import { LoginContext } from "../../../context/auth/login";
 
 function Post({ socket, community_id }) {
-  const username = "testUser";
+  const login = useContext(LoginContext);
 
+  const [username, setUsername] = useState(login.user.full_name);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -14,14 +17,6 @@ function Post({ socket, community_id }) {
     socket.on("pass-message", (message) => {
       displayMessage(message);
     });
-    // socket.on("message", messageListener);
-    // socket.on("deleteMessage", deleteMessageListener);
-    // socket.emit("getMessages");
-
-    return () => {
-      //   socket.off("message", messageListener);
-      //   socket.off("deleteMessage", deleteMessageListener);
-    };
   }, [socket]);
   function displayMessage(message) {
     setPosts([...posts, message]);

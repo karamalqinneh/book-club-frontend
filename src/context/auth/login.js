@@ -13,9 +13,8 @@ export default function LoginProvider(props) {
 
   const login = async (email, password) => {
     const response = await superagent
-      .post(`${API}/signin`)
+      .post(`${process.env.REACT_APP_SERVER}/signin`)
       .set("authorization", `Basic ${base64.encode(`${email}:${password}`)}`);
-    console.log("inside login >> response", response); //userInfo + token
     validateMyUser(response.body);
   };
 
@@ -50,7 +49,6 @@ export default function LoginProvider(props) {
   }, []);
 
   const canDo = (capability) => {
-    // optional chaining
     return user?.actions?.includes(capability);
   };
 

@@ -69,11 +69,7 @@ const FanSuggestion = (props) => {
       image_url: imageRef.current.value,
       publish_date: dateRef.current.value,
     };
-    // let request = await axios.post(
-    //   "https://erp-system-2022.herokuapp.com/add-customer",
-    //   body
-    // );
-    // console.log(request);
+    await axios.post(`${process.env.REACT_APP_SERVER}/suggest-book`, body);
     bookNameRef.current.value = "";
     genreRef.current.value = "";
     introductionRef.current.value = "";

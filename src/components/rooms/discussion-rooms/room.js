@@ -10,7 +10,7 @@ function Room() {
   let { room_id } = useParams();
 
   useEffect(() => {
-    const newSocket = io(`http://localhost:3001`);
+    const newSocket = io(`${process.env.REACT_APP_SERVER}`);
     setSocket(newSocket);
     setRoom(room_id);
     return () => newSocket.close();
@@ -18,10 +18,10 @@ function Room() {
 
   return (
     <div>
-      <header className="app-header">React Chat</header>
+      <header>React Chat</header>
       <Link to="/discussions">Leave</Link>
       {socket ? (
-        <div className="chat-container">
+        <div>
           <Post socket={socket} community_id={roomID} />
           <PostInput socket={socket} community_id={roomID} />
         </div>

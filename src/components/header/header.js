@@ -157,8 +157,7 @@ const Header = () => {
   const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
-    setUsername(login.user.name);
-    setJobTitle(login.user.jobTitle);
+    setUsername(login.user.fullName);
   }, [login.user]);
   return (
     <>
@@ -182,7 +181,6 @@ const Header = () => {
             <Avatar src={avatar} alt="logo" />
             <UserInfo>
               <UserName>{username}</UserName>
-              <Postion>{jobTitle}</Postion>
             </UserInfo>
             <Triangle onClick={() => setShow(!show)} />
           </When>
@@ -193,7 +191,6 @@ const Header = () => {
       </StyledHeader>
       {show && (
         <OptionsDiv>
-          <Option>Profile Settings</Option>
           <Option
             onClick={() => {
               login.logout();
